@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Mega:wght@100..900&family=Public+Sans:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-black selection:bg-primary;
+    font-family: 'Public Sans', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Lexend Mega', sans-serif;
+  }
+}
+
+@layer components {
+
+  /* Border utilities */
+  .brutal-border {
+    @apply border-4 border-black;
+  }
+
+  /* Card component - standardized */
+  .brutal-card {
+    @apply bg-white brutal-border rounded-2xl p-6 shadow-brutal transition-all duration-150 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-brutal-sm cursor-pointer;
+  }
+
+  /* Button base */
+  .brutal-btn {
+    @apply px-6 py-3 brutal-border font-black uppercase rounded-xl shadow-brutal transition-all duration-150 active:translate-x-[4px] active:translate-y-[4px] active:shadow-none cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .brutal-btn-primary {
+    @apply brutal-btn bg-primary hover:bg-yellow-400;
+  }
+
+  .brutal-btn-secondary {
+    @apply brutal-btn bg-white hover:bg-slate-50;
+  }
+
+  .brutal-btn-accent {
+    @apply brutal-btn bg-accent text-white hover:bg-blue-600;
+  }
+
+  .brutal-btn-danger {
+    @apply brutal-btn bg-secondary text-white hover:bg-red-600;
+  }
+
+  /* Input component - standardized */
+  .brutal-input {
+    @apply w-full px-4 py-4 bg-white brutal-border rounded-2xl font-bold focus:outline-none shadow-brutal-sm focus:shadow-brutal focus:ring-2 focus:ring-primary transition-all duration-150;
+  }
+
+  /* Badge component */
+  .brutal-badge {
+    @apply px-3 py-1 brutal-border rounded-full font-black text-xs uppercase shadow-brutal-sm bg-white;
+  }
+
+  /* Loading skeleton - standardized heights */
+  .skeleton {
+    @apply bg-slate-200 animate-pulse rounded-2xl;
+  }
+
+  .skeleton-sm {
+    @apply skeleton h-4;
+  }
+
+  .skeleton-md {
+    @apply skeleton h-8;
+  }
+
+  .skeleton-lg {
+    @apply skeleton h-16;
+  }
+
+  .skeleton-card {
+    @apply skeleton h-48;
+  }
+
+  .skeleton-text {
+    @apply skeleton h-4 w-3/4;
+  }
+
+  /* Marquee/Looping animation for neubrutalism feel */
+  .marquee {
+    @apply whitespace-nowrap overflow-hidden flex;
+  }
+
+  .marquee-content {
+    @apply flex animate-marquee;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* Global animations */
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-primary;
+}
